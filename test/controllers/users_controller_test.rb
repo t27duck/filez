@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
@@ -17,7 +19,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference("User.count") do
-      post users_url, params: { user: { admin: @user.admin, default_download_limit: @user.default_download_limit, default_expiration_duration: @user.default_expiration_duration, default_private: @user.default_private, password_digest: @user.password_digest, token: @user.token, upload_key: @user.upload_key, username: @user.username } }
+      post users_url, params: {
+        user: {
+          admin: @user.admin, default_download_limit: @user.default_download_limit,
+          default_expiration_duration: @user.default_expiration_duration, default_private: @user.default_private,
+          password_digest: @user.password_digest, token: @user.token, upload_key: @user.upload_key,
+          username: @user.username
+        }
+      }
     end
 
     assert_redirected_to user_url(User.last)
@@ -34,7 +43,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { admin: @user.admin, default_download_limit: @user.default_download_limit, default_expiration_duration: @user.default_expiration_duration, default_private: @user.default_private, password_digest: @user.password_digest, token: @user.token, upload_key: @user.upload_key, username: @user.username } }
+    patch user_url(@user), params: {
+      user: {
+        admin: @user.admin, default_download_limit: @user.default_download_limit,
+        default_expiration_duration: @user.default_expiration_duration, default_private: @user.default_private,
+        password_digest: @user.password_digest, token: @user.token, upload_key: @user.upload_key,
+        username: @user.username
+      }
+    }
     assert_redirected_to user_url(@user)
   end
 
