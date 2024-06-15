@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  password_digest: <%= BCrypt::Password.create(TEST_PASSWORD) %>
+  token: <%= Random.hex %>
+  upload_key: <%= Random.hex %>
+  default_private: true
+  default_expiration_duration: ""
+  default_download_limit: -1
