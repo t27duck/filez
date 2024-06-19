@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to profile_path, notice: "Password successfully set." }
+        format.html { redirect_to root_path, notice: translate("flash.setup_complete") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -28,6 +28,15 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @user = @user_signed_in
+
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to edit_profile_path, notice: translate("flash.settings_updated") }
+      else
+        format.html { render :ecit, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

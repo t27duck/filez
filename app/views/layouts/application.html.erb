@@ -18,6 +18,8 @@
   </head>
 
   <body>
+    <%= tag.aside alert if alert %>
+    <%= tag.aside notice if notice %>
     <%= yield %>
   </body>
 </html>

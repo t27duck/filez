@@ -1,2 +1,36 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<% content_for :title, "Edit Settings" %>
+
+<h1>Edit Settings</h1>
+
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :default_private, style: "display: block" %>
+    <%= form.check_box :default_private %>
+  </div>
+
+  <div>
+    <%= form.label :default_expiration_duration, style: "display: block" %>
+    <%= form.text_field :default_expiration_duration %>
+  </div>
+
+  <div>
+    <%= form.label :default_download_limit, style: "display: block" %>
+    <%= form.number_field :default_download_limit %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
+  around_action :switch_locale
   before_action :authenticate_user!
 
   helper_method :user_signed_in?
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_signed_in?
-    @user_signed_in ||= User.exists?(token: cookies.signed[:signin])
+    @user_signed_in ||= User.find_by(token: cookies.signed[:signin])
   end
 
   def authenticate_user!
@@ -37,5 +38,10 @@ class ApplicationController < ActionController::Base
     else
       redirect_to new_session_path
     end
+  end
+
+  def switch_locale(&action)
+    locale = ENV["FILEZ_LOCALE"].presence || I18n.default_locale
+    I18n.with_locale(locale, &action)
   end
 end

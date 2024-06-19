@@ -1,0 +1,15 @@
+<% content_for :title, "Sign In" %>
+
+<h1>Sign In</h1>
+
+<%= form_with url: session_path do |form| %>
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password, autocomplete: "password" %>
+  </div>
+
+  <div>
+    <%= form.submit "Sign In" %>
+  </div>
+<% end %>
+
