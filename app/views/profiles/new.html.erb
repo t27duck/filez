@@ -2,7 +2,7 @@
 
 <h1>User Setup</h1>
 
-<%= form_with(model: @user) do |form| %>
+<%= form_with(model: @user, url: profile_path) do |form| %>
   <% if @user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
