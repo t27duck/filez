@@ -20,6 +20,9 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Hack until new turbo-rails release comes out.
+class Turbo::StreamsChannel; end unless defined?(ActionCable)
+
 module Filez
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
