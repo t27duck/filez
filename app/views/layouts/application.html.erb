@@ -13,13 +13,23 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= tag.aside alert if alert %>
-    <%= tag.aside notice if notice %>
-    <%= yield %>
+  <body class="bg-blue-500">
+    <% if alert.present? %>
+      <aside data-controller="dismiss" data-dismiss-target="content" data-action="click->dismiss#close" class="cursor-pointer w-full fixed bottom-0 z-50 bg-red-500 px-4 py-2 text-white transition hover:bg-red-600">
+        <div class="text-center font-bold"><%= alert %></div>
+      </aside>
+    <% end %>
+    <% if notice.present? %>
+      <aside data-controller="dismiss" data-dismiss-target="content" data-action="click->dismiss#close" class="cursor-pointer w-full fixed bottom-0 z-50 bg-green-500 px-4 py-2 text-white transition hover:bg-green-600">
+        <div class="text-center font-bold"><%= notice %></div>
+      </aside>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

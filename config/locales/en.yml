@@ -29,6 +29,6 @@
 
 en:
   flash:
-    incorect_password: "Incorrect Password"
+    incorrect_password: "Incorrect Password"
     setup_complete: "Password saved. Please sign in."
     settings_updated: "Settings updated."

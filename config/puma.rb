@@ -35,11 +35,11 @@ when "production"
   # should be equal to the number of processors (CPU cores) in production.
   #
   # Automatically detect the number of available processors in production.
-  require "concurrent-ruby"
-  workers_count = Integer(ENV.fetch("WEB_CONCURRENCY") { Concurrent.available_processor_count })
-  workers workers_count if workers_count > 1
+  # require "concurrent-ruby"
+  # workers_count = Integer(ENV.fetch("WEB_CONCURRENCY") { Concurrent.available_processor_count })
+  # workers workers_count if workers_count > 1
 
-  preload_app!
+  # preload_app!
 when "development"
   # Specifies a very generous `worker_timeout` so that the worker
   # isn't killed by Puma when suspended by a debugger.
@@ -54,3 +54,5 @@ plugin :tmp_restart
 
 # Only use a pidfile when requested
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+
+plugin :tailwindcss if ENV.fetch("RAILS_ENV", "development") == "development"
