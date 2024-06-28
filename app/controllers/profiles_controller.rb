@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @user = @user_signed_in
   end
 
   def show
@@ -34,18 +35,18 @@ class ProfilesController < ApplicationController
       if @user.update(user_params)
         format.html { redirect_to edit_profile_path, notice: translate("flash.settings_updated") }
       else
-        format.html { render :ecit, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:default_private, :default_expiration_duration, :default_download_limit)
+  def user_password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
-  def user_password_params
+  def user_params
     params.require(:user).permit(:password, :password_confirmation)
   end
 end

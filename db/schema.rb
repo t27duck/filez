@@ -15,9 +15,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_204921) do
     t.string "password_digest", null: false
     t.string "token", null: false
     t.string "upload_key", null: false
-    t.boolean "default_private", default: true, null: false
-    t.string "default_expiration_duration"
-    t.integer "default_download_limit", default: -1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

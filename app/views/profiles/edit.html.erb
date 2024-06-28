@@ -1,36 +1,33 @@
 <% content_for :title, "Edit Settings" %>
 
-<h1>Edit Settings</h1>
+<div class="sm:mt-10 p-4 bg-white sm:mx-auto sm:w-full sm:max-w-md sm:rounded-md">
+  <%= render partial: "shared/nav" %>
+  <%= form_with model: @user, url: profile_path do |form| %>
+    <div class="space-y-4">
+      <h1>Edit Settings</h1>
+      <% if @user.errors.any? %>
+        <div class="text-red-600">
+          <ul>
+            <% @user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<%= form_with(model: @user) do |form| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <div>
+        <%= form.label :password, class: "block" %>
+        <%= form.password_field :password, autocomplete: "new-password", class: "w-full" %>
+      </div>
 
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+      <div>
+        <%= form.label :password_confirmation, class: "block" %>
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "w-full" %>
+      </div>
+
+      <div>
+        <%= form.submit "Update", class: "button-primary button-full" %>
+      </div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :default_private, style: "display: block" %>
-    <%= form.check_box :default_private %>
-  </div>
-
-  <div>
-    <%= form.label :default_expiration_duration, style: "display: block" %>
-    <%= form.text_field :default_expiration_duration %>
-  </div>
-
-  <div>
-    <%= form.label :default_download_limit, style: "display: block" %>
-    <%= form.number_field :default_download_limit %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
