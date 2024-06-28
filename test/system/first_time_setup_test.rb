@@ -23,6 +23,6 @@ class FirstTimeSetupTest < ApplicationSystemTestCase
 
     click_on "Sign In"
 
-    assert_text "This is the home page"
+    assert_text "Sign out"
   end
 end
