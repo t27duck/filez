@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
+  resources :download, only: [:show] do
+    get :download, as: :member
+  end
   resource :home, only: [:show]
   resources :files, only: [:index, :show] do
-    member do
-      get :download
-    end
+    get :download, as: :member
   end
   resource :profile, except: [:destroy]
   resource :session, only: [:new, :create, :destroy]
