@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
+  resource :upload, only: [:create]
   resource :home, only: [:show]
   resource :profile, except: [:destroy]
   resource :session, only: [:new, :create, :destroy]
