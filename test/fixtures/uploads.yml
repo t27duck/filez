@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  token: MyString
+  token: <%= Random.hex %>
   private: false
   direct_upload: false
   download_count: 1
@@ -9,7 +9,7 @@ one:
   expires_at: 2024-06-28 16:53:22
 
 two:
-  token: MyString
+  token: <%= Random.hex %>
   private: false
   direct_upload: false
   download_count: 1
