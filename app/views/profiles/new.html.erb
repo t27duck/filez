@@ -1,6 +1,6 @@
 <% content_for :title, "User Setup" %>
 
-<%= form_with model: @user, url: profile_path, class: "sm:mt-10 p-4 bg-white sm:mx-auto sm:w-full sm:max-w-md sm:rounded-md" do |form| %>
+<%= form_with model: @user, url: profile_path, class: "sm:mt-10 p-4 bg-white sm:mx-auto sm:w-full sm:max-w-lg sm:rounded-md" do |form| %>
   <div class="space-y-4">
     <h1>User Setup</h1>
     <% if @user.errors.any? %>

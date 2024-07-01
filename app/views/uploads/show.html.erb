@@ -1,0 +1,10 @@
+<% content_for :title, "File Details" %>
+
+<div class="sm:mt-10 p-4 bg-white sm:mx-auto sm:w-full sm:max-w-lg sm:rounded-md">
+  <div class="space-y-4">
+    <h1><%= @upload.file.filename %></h1>
+    <div>Type: <%= @upload.file.content_type %></div>
+    <div>Size: <%= number_to_human_size(@upload.file.byte_size) %></div>
+    <%= button_to "Download", download_upload_path(@upload_sid), class: "button-primary button-full", form: { data: { turbo: false } } %>
+  </div>
+</div>
