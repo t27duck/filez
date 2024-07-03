@@ -5,6 +5,7 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 TEST_PASSWORD = "testing123"
+ENV["LOCKBOX_MASTER_KEY"] ||= Lockbox.generate_key
 
 module ActiveSupport
   class TestCase
