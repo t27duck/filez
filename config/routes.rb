@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resource :home, only: [:show]
-  resources :files, only: [:index, :show] do
+  resources :files, only: [:index, :show, :create, :update] do
     post :download, on: :member
   end
   resource :profile, except: [:destroy]
+  resource :share, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :uploads, only: [:show, :create, :destroy] do
     post :download, on: :member

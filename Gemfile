@@ -60,3 +60,4 @@ end
 
 gem "active_storage_validations"
 gem "lockbox", "~> 1.3"
+gem "pagy"

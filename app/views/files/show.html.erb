@@ -7,4 +7,13 @@
     <div>Size: <%= number_to_human_size(@upload.file.byte_size) %></div>
     <%= button_to "Download", download_file_path(@upload), class: "button-primary button-full", form: { data: { turbo: false } } %>
   </div>
+
+  <div class="my-4 p-4 space-y-4 border border-blue-400 rounded-md">
+    <% if @upload.private? %>
+      <%= button_to "Make Sharable", file_path(@upload), class: "button-primary button-full", method: :patch, params: { upload: { private: false } } %>
+    <% else %>
+      <%= button_to "Make Private", file_path(@upload), class: "button-primary button-full", method: :patch, params: { upload: { private: true } } %>
+      <%= turbo_frame_tag dom_id(@upload, prefix: :share_url), src: new_share_path(id: @upload) %>
+    <% end %>
+  </div>
 </div>
