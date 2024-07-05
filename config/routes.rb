@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   resource :profile, except: [:destroy]
   resource :session, only: [:new, :create, :destroy]
-  resources :uploads, only: [:show, :create] do
+  resources :uploads, only: [:show, :create, :destroy] do
     post :download, on: :member
   end
 

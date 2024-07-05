@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 
 class FilesController < ApplicationController
-  before_action :fetch_upload, only: [:show, :download]
+  before_action :fetch_upload, only: [:show, :download, :destroy]
 
   def index
+    @uploads = Upload.all
   end
 
   def show
+  end
+
+  def destroy
+    @upload.destroy!
+    redirect_to files_path, status: :see_other
   end
 
   def download

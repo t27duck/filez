@@ -1,0 +1,17 @@
+<div class="sm:mt-10 p-4 bg-white sm:mx-auto sm:rounded-md">
+  <table class="table-auto w-full">
+    <tbody class="divide-y-2">
+      <% @uploads.each do |upload| %>
+        <tr class="leading-10">
+          <td><%= link_to upload.file.filename, file_path(upload), class: "underline" %></td>
+          <td class="whitespace-nowrap hidden sm:table-cell"><%= upload.file.content_type %></td>
+          <td class="whitespace-nowrap"><%= number_to_human_size(upload.file.byte_size) %></td>
+          <td class="whitespace-nowrap flex justify-end items-end space-x-2">
+            <%= button_to "💾", download_file_path(upload) %>
+            <%= button_to "🗑️", file_path(upload), method: :delete, data: { turbo: { confirm: "Are you sure you want to delete this file?" } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
