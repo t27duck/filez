@@ -1,19 +1,27 @@
 <div class="sm:mt-10 p-4 bg-white sm:mx-auto sm:rounded-md">
-  <%= form_with model: Upload.new, url: files_path do |form| %>
-    <%= form.file_field :file %>
-    <%= form.submit class: "button-primary" %>
-  <% end %>
+
+  <div class="sm:flex sm:justify-end">
+    <div></div>
+    <%= form_with model: Upload.new, url: files_path, data: { controller: "form-submit" } do |form| %>
+      <%= form.label :file, class: "block sm:inline-block font-semibold text-blue-600 rounded-lg border border-dashed border-gray-900 p-2" do %>
+        <%= form.file_field :file, class: "w-auto", data: { action: "input->form-submit#submit" } %>
+      <% end %>
+    <% end %>
+  </div>
+
   <table class="table-auto w-full">
     <tbody class="divide-y-2">
       <% @uploads.each do |upload| %>
         <tr class="leading-10">
           <td><%= link_to upload.file.filename, file_path(upload), class: "underline" %></td>
           <td class="whitespace-nowrap hidden sm:table-cell"><%= upload.file.content_type %></td>
-          <td class="whitespace-nowrap"><%= number_to_human_size(upload.file.byte_size) %></td>
-          <td class="whitespace-nowrap"><%= upload.created_at.to_date.to_fs(:rfc822) %></td>
-          <td class="whitespace-nowrap flex justify-end items-end space-x-2">
-            <%= button_to "💾", download_file_path(upload) %>
-            <%= button_to "🗑️", file_path(upload), method: :delete, data: { turbo: { confirm: "Are you sure you want to delete this file?" } } %>
+          <td class="whitespace-nowrap hidden sm:table-cell"><%= number_to_human_size(upload.file.byte_size) %></td>
+          <td class="whitespace-nowrap hidden sm:table-cell"><%= upload.created_at.to_date.to_fs(:rfc822) %></td>
+          <td class="whitespace-nowrap">
+            <div class="flex justify-end space-x-2">
+              <%= button_to "💾", download_file_path(upload) %>
+              <%= button_to "🗑️", file_path(upload), method: :delete, data: { turbo_confirm: "Are you sure you want to delete this file?" } %>
+            </div>
           </td>
         </tr>
       <% end %>

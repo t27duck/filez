@@ -16,6 +16,7 @@ class FilesController < ApplicationController
 
   def create
     @upload = Upload.new(upload_params)
+    @upload.private = true
     if @upload.save
       redirect_to files_path, notice: "File uploaded"
     else
