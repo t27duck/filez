@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  resource :home, only: [:show]
   resources :files, only: [:index, :show, :create, :update, :destroy] do
     post :download, on: :member
   end
@@ -23,5 +22,5 @@ Rails.application.routes.draw do
     post :download, on: :member
   end
 
-  root "homes#show"
+  root "files#index"
 end
