@@ -1,9 +1,9 @@
 one_file_attachment:
   name: thumbnail
-  record: one (Article)
+  record: one (Upload)
   blob: one_file_blob
 
 two_file_attachment:
   name: thumbnail
-  record: two (Article)
+  record: two (Upload)
   blob: two_file_blob

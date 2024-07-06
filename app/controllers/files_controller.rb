@@ -4,7 +4,7 @@ class FilesController < ApplicationController
   before_action :fetch_upload, only: [:show, :update, :destroy, :download]
 
   def index
-    @pagy, @uploads = pagy(Upload.order(created_at: :desc), items: 30)
+    @pagy, @uploads = pagy(Upload.order(created_at: :desc).with_attached_file, items: 30)
   end
 
   def show
