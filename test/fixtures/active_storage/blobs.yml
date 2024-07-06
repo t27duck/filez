@@ -1,0 +1,3 @@
+one_file_blob: <%= ActiveStorage::FixtureSet.blob filename: "text_file_upload.txt" %>
+
+two_file_blob: <%= ActiveStorage::FixtureSet.blob filename: "text_file_upload.txt" %>
