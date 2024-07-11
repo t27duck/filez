@@ -1,24 +1,13 @@
-# README
+# Hosting the app yourself
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Fork the repo.
+* Create a "production" branch.
+  * This allows you to sync `main` with upstream
+  * Merge `main` with changes in your other branch.
+* Generate a `lockbox` key and set it up in app credentials or an environment variable.
+  See: https://github.com/ankane/lockbox?tab=readme-ov-file#key-generation
+* Deploy and enjoy.
 
-Things you may want to cover:
+# First-time use
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The first time you visit the app, you will be prompted for a password.
