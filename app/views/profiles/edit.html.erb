@@ -30,4 +30,39 @@
       </div>
     </div>
   <% end %>
+
+  <hr />
+
+  <div class="space-y-2">
+    <h1>Direct Upload</h1>
+
+    <div>
+      <%= label_tag :upload_key, nil, { class: "block" } %>
+      <%= tag.div class: "relative rounded-md shadow-sm",
+        data: {
+          controller: "clipboard",
+          clipboard_text_value: current_user.upload_key
+        } do %>
+        <%= text_field_tag :upload_key, current_user.upload_key, autocomplete: "off", class:"block w-full rounded-md border-0 py-1.5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6" %>
+        <div class="absolute inset-y-0 right-0 flex items-center">
+          <%= button_tag "Copy", class: "h-full py-0 button-primary sm:text-sm", data: { action: "click->clipboard#copy", clipboard_target: "button" } %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= button_to "Regenerate", upload_key_path, class: "button-primary button-full" %>
+  </div>
+
+  <hr />
+
+  <div class="space-y-2">
+    <div>
+      <h4>CURL Example:</h4>
+      <div class="font-mono whitespace-pre-line overflow-x-scroll">$ curl -i -X POST \
+        -H "Authorization: Bearer UPLOAD_KEY" \
+        -F file=@../path/to/file.txt \
+        <%= request.base_url %>/uploads
+      </div>
+    </div>
+  </div>
 </div>

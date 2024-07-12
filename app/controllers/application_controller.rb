@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
   before_action :authenticate_user!
 
-  helper_method :user_signed_in?
+  helper_method :user_signed_in?, :current_user
 
   private
 
@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
 
   def user_signed_in?
     @user_signed_in ||= User.find_by(token: cookies.signed[:signin])
+  end
+
+  def current_user
+    @user_signed_in
   end
 
   def authenticate_user!

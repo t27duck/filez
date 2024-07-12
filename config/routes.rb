@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :uploads, only: [:show, :create, :destroy] do
     post :download, on: :member
   end
+  resource :upload_key, only: [:create]
 
   root "files#index"
 end

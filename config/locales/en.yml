@@ -32,3 +32,4 @@ en:
     incorrect_password: "Incorrect Password"
     setup_complete: "Password saved. Please sign in."
     settings_updated: "Settings updated."
+    upload_key_regenerated: "Upload key regenerated."
