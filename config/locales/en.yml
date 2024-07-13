@@ -33,3 +33,9 @@ en:
     setup_complete: "Password saved. Please sign in."
     settings_updated: "Settings updated."
     upload_key_regenerated: "Upload key regenerated."
+  tooltip:
+    details: Details
+    delete: Delete
+    download: Download
+    private: Private
+    shareable: Shareable

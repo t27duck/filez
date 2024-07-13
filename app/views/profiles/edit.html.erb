@@ -17,12 +17,12 @@
 
       <div>
         <%= form.label :password, class: "block" %>
-        <%= form.password_field :password, autocomplete: "new-password", class: "textfield" %>
+        <%= form.password_field :password, autocomplete: "new-password", class: "textfield w-full" %>
       </div>
 
       <div>
         <%= form.label :password_confirmation, class: "block" %>
-        <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "textfield" %>
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "textfield w-full" %>
       </div>
 
       <div>
@@ -43,7 +43,7 @@
           controller: "clipboard",
           clipboard_text_value: current_user.upload_key
         } do %>
-        <%= text_field_tag :upload_key, current_user.upload_key, autocomplete: "off", class:"textfield pr-20" %>
+        <%= text_field_tag :upload_key, current_user.upload_key, autocomplete: "off", class:"textfield w-full pr-20" %>
         <div class="absolute inset-y-0 right-0 flex items-center">
           <%= button_tag "Copy", class: "h-full py-0 button-primary sm:text-sm", data: { action: "click->clipboard#copy", clipboard_target: "button" } %>
         </div>
