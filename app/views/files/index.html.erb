@@ -15,7 +15,6 @@
       <% @uploads.each do |upload| %>
         <tr class="leading-10">
           <td>
-              <%= upload.private? ? tag.span("🔐", title: translate("tooltip.private")) : tag.span("🔓", title: translate("tooltip.shareable")) %>
               <%= link_to upload.file.filename, file_path(upload), class: "underline" %>
           </td>
           <td class="whitespace-nowrap hidden sm:table-cell"><%= upload.file.content_type %></td>

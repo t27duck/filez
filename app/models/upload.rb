@@ -23,10 +23,6 @@ class Upload < ApplicationRecord
     expires_at&.past? || (download_limit.present? && download_limit > download_count)
   end
 
-  def public_downloadable?
-    !private? && !expired?
-  end
-
   def expires=(value)
     self.expires_at = nil
     @expires = value

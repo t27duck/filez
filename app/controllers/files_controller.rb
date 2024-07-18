@@ -8,6 +8,7 @@ class FilesController < ApplicationController
   end
 
   def show
+    @share_url = upload_url(@upload.signed_id)
   end
 
   def new
@@ -16,7 +17,6 @@ class FilesController < ApplicationController
 
   def create
     @upload = Upload.new(upload_params)
-    @upload.private = true
     if @upload.save
       redirect_to files_path, notice: "File uploaded"
     else

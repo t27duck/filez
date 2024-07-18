@@ -11,12 +11,10 @@ class UploadsController < ApplicationController
     if authenticate_with_http_token { |token, _options| token == @user.upload_key }
       @upload = Upload.new(upload_params)
       @upload.file = params[:file]
-      @upload.direct_upload = true
       if @upload.save
-        share_url = upload_url(@upload.signed_id) if @upload.public_downloadable?
         render json: {
           status: 201,
-          share_url: share_url,
+          share_url: upload_url(@upload.signed_id),
           url: file_url(@upload)
         }, status: :created
       else
@@ -47,8 +45,7 @@ class UploadsController < ApplicationController
   def upload_params
     {
       download_count: params[:limit],
-      expires: params[:expires],
-      private: params[:private]
+      expires: params[:expires]
     }.compact_blank
   end
 end
