@@ -14,9 +14,7 @@
     <tbody class="divide-y-2">
       <% @uploads.each do |upload| %>
         <tr class="leading-10">
-          <td>
-              <%= link_to upload.file.filename, file_path(upload), class: "underline" %>
-          </td>
+          <td><%= link_to upload.file.filename, file_path(upload), class: "underline" %></td>
           <td class="whitespace-nowrap hidden sm:table-cell"><%= upload.file.content_type %></td>
           <td class="whitespace-nowrap hidden sm:table-cell"><%= number_to_human_size(upload.file.byte_size) %></td>
           <td class="whitespace-nowrap hidden sm:table-cell"><%= upload.created_at.to_date.to_fs(:rfc822) %></td>

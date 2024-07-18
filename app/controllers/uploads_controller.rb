@@ -39,7 +39,7 @@ class UploadsController < ApplicationController
     @upload_sid = params[:id]
     @upload = Upload.find_signed(@upload_sid)
 
-    raise ActiveRecord::RecordNotFound unless @upload.present? && @upload.public_downloadable?
+    raise ActiveRecord::RecordNotFound if @upload.blank? || @upload.expired?
   end
 
   def upload_params

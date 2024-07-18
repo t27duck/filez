@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     post :download, on: :member
   end
   resource :profile, except: [:destroy]
-  resource :share, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :uploads, only: [:show, :create, :destroy] do
     post :download, on: :member
