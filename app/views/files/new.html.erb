@@ -1,0 +1,8 @@
+<%= render 'layouts/turbo_dialog' do %>
+  <%= form_with model: @upload, url: files_path, class: "flex justify-between" do |form| %>
+    <%= form.label :file, class: "block sm:inline-block font-semibold text-blue-600 rounded-lg border border-dashed border-gray-900 p-2" do %>
+      <%= form.file_field :file, required: true, class: "w-auto" %>
+    <% end %>
+    <%= form.submit class: "button-primary" %>
+  <% end %>
+<% end %>

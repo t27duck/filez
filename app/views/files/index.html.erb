@@ -3,11 +3,7 @@
 
   <div class="sm:flex sm:justify-end">
     <div></div>
-    <%= form_with model: Upload.new, url: files_path, data: { controller: "form-submit" } do |form| %>
-      <%= form.label :file, class: "block sm:inline-block font-semibold text-blue-600 rounded-lg border border-dashed border-gray-900 p-2" do %>
-        <%= form.file_field :file, class: "w-auto", data: { action: "input->form-submit#submit" } %>
-      <% end %>
-    <% end %>
+    <%= link_to "New Upload", new_file_path, data: { turbo_frame: :modal }, class: "button-primary" %>
   </div>
 
   <table class="table-auto w-full">

@@ -18,7 +18,15 @@ class FilesController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
     if @upload.save
-      redirect_to files_path, notice: "File uploaded"
+      respond_to do |format|
+        format.turbo_stream do
+          flash[:notice] = "File uploaded"
+          render turbo_stream: turbo_stream.action(:redirect, files_path)
+        end
+        format.html do
+          redirect_to files_path, notice: "File uploaded"
+        end
+      end
     else
       redirect_to files_path, alert: @upload.errors.full_sentences.join
     end
