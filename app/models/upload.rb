@@ -4,8 +4,6 @@ class Upload < ApplicationRecord
   attr_reader :expires
 
   has_one_attached :file
-  encrypts_attached :file
-
   has_secure_token
 
   validates :file, attached: true
