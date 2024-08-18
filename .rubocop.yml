@@ -1,20 +1,60 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
-
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-minitest
 
 AllCops:
   TargetRubyVersion: 3.3
-
-Layout/SpaceInsideArrayLiteralBrackets:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: true
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "db/migrate/**/*"
+    - "db/schema.rb"
+    - "bin/**/*"
+    - "vendor/bundle/**/*"
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - app/helpers/application_helper.rb
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/PerceivedComplexity:
+  Max: 12
+
+Minitest/MultipleAssertions:
+  Max: 10
+
+Naming/BlockForwarding:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+  EnforcedShorthandSyntax: never
+
+Style/OpenStructUse:
+  Exclude:
+    - "test/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false

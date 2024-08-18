@@ -6,6 +6,9 @@ class UploadsController < ApplicationController
 
   before_action :fetch_upload, only: [:show, :download]
 
+  def show
+  end
+
   def create
     @user = User.take
     if authenticate_with_http_token { |token, _options| token == @user.upload_key }
@@ -25,11 +28,8 @@ class UploadsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def download
-    @upload.increment!(:download_count, touch: true)
+    @upload.increment!(:download_count, touch: true) # rubocop:disable Rails/SkipsModelValidations
     send_data @upload.file.download, type: @upload.file.content_type, filename: @upload.file.filename.to_s
   end
 

@@ -20,11 +20,11 @@ class FilesController < ApplicationController
     if @upload.save
       respond_to do |format|
         format.turbo_stream do
-          flash[:notice] = "File uploaded"
+          flash[:notice] = translate("flash.file_uploaded")
           render turbo_stream: turbo_stream.action(:redirect, files_path)
         end
         format.html do
-          redirect_to files_path, notice: "File uploaded"
+          redirect_to files_path, notice: translate("flash.file_uploaded")
         end
       end
     else

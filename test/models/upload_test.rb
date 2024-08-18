@@ -11,6 +11,7 @@ class UploadTest < ActiveSupport::TestCase
       content_type: "plain/text"
     )
     upload.expires = ""
+
     assert_nil upload.expires_at
   end
 
@@ -23,7 +24,8 @@ class UploadTest < ActiveSupport::TestCase
         content_type: "plain/text"
       )
       upload.expires = "p3d"
-      assert upload.valid?
+
+      assert_predicate upload, :valid?
       assert_equal 3.days.from_now, upload.expires_at
     end
   end
@@ -37,6 +39,7 @@ class UploadTest < ActiveSupport::TestCase
         content_type: "plain/text"
       )
       upload.expires = "p3dBad"
+
       assert_not upload.valid?
       assert_nil upload.expires_at
       assert_includes upload.errors.full_messages, "Expires is not a valid ISO 8601 string"

@@ -9,8 +9,10 @@ class Upload < ApplicationRecord
   validates :file, attached: true
   validate :validate_and_store_expiration_string
 
-  scope :expired, -> {
-    where(expires_at: ...Time.now).or(Upload.where("(download_limit IS NOT NULL AND download_limit > download_count)"))
+  scope :expired, lambda {
+    where(expires_at: ...Time.zone.now).or(
+      Upload.where("(download_limit IS NOT NULL AND download_limit > download_count)")
+    )
   }
 
   def to_param

@@ -29,6 +29,7 @@
 
 en:
   flash:
+    file_uploaded: "File Uploaded"
     incorrect_password: "Incorrect Password"
     setup_complete: "Password saved. Please sign in."
     settings_updated: "Settings updated."

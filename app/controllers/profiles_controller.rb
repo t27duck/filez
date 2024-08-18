@@ -5,15 +5,15 @@ class ProfilesController < ApplicationController
   before_action :require_user, only: [:edit, :show, :update]
   skip_before_action :authenticate_user!, only: [:new, :create]
 
+  def show
+  end
+
   def new
     @user = User.new
   end
 
   def edit
     @user = @user_signed_in
-  end
-
-  def show
   end
 
   def create
