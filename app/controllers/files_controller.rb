@@ -20,7 +20,7 @@ class FilesController < ApplicationController
     if @upload.save
       respond_to do |format|
         format.turbo_stream do
-          flash[:notice] = translate("flash.file_uploaded") # rubocop:disable Rails/ActionControllerFlashBeforeRender
+          flash[:notice] = translate("flash.file_uploaded")
           render turbo_stream: turbo_stream.action(:redirect, files_path)
         end
         format.html do
